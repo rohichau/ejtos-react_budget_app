@@ -11,6 +11,7 @@ import ExpenseTotal from './components/ExpenseTotal';
 import ExpenseList from './components/ExpenseList';
 import AllocationForm from './components/AllocationForm';
 import CurrencySelector from './components/CurrencySelector';
+import Dropdown from './components/Dropdown';
 
 import { AppProvider } from './context/AppContext';
 const App = () => {
@@ -49,7 +50,8 @@ const App = () => {
                     </div>
                     }          
                     </div>
-                    <div className= 'row mt-2'>     
+                    <div className= 'row mt-2'>
+                    <h2 className='mt-3'>Change Allocation</h2>     
                     {                    
                    <div className='col-sm'>
                         <AllocationForm />

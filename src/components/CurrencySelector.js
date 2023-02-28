@@ -1,36 +1,28 @@
 import React, { useContext } from 'react';
 import { AppContext } from '../context/AppContext';
-import Dropdown from 'react-bootstrap/Dropdown';
-import DropdownButton from 'react-bootstrap/DropdownButton';
+// import Dropdown from 'react-bootstrap/Dropdown';
+// import DropdownButton from 'react-bootstrap/DropdownButton';
 
 const CurrencySelector = () => {
 
-    // const styles = {
-    //     customSelect: {
-    //       backgroundColor: "red",
-    //     },
-    //   };
-
+    const {dispatch} = useContext(AppContext);
     return (
-        <div className='currencySelector'>
-                    <div className = 'col-sm'>
-            <label className="currencyLabel">Currency</label>
-        </div>
-            {/* <div className="dropdown">
-            <select className="dropdown" id="customSelect">
-                <option  value="£" name="pound" style={{color: 'green', backgroundColor:'green'}}> £ Pound</option>
-                <option  value="$" name="dollar" style={{color: 'green'}}> $ Dollar</option>
-                <option  value="€" name="euro" > € Euro</option>
-                <option  value="₹" name="ruppee"> ₹ Ruppee</option>
-            </select>
-            </div> */}
-            <DropdownButton id="dropdown-basic-button">
-                <Dropdown.Item  style={{color: 'black', backgroundColor: 'green'}}>£ Pound</Dropdown.Item>
-                <Dropdown.Item  style={{color: 'black', backgroundColor: 'green'}}>$ Dollar</Dropdown.Item>
-                <Dropdown.Item  style={{color: 'black', backgroundColor: 'green'}}>€ Euro</Dropdown.Item>
-                <Dropdown.Item  style={{color: 'black', backgroundColor: 'green'}}>₹ Ruppee</Dropdown.Item>
-            </DropdownButton>
-        </div>
-    );
+    <div className="input-group mb-3" style={{ marginLeft: '2rem' }}>
+    <div className="input-group-prepend">
+    <label className="input-group-text" htmlFor="inputGroupSelect01">Currency</label>
+    </div>
+    <select className="custom-select" id="inputGroupSelect01" onChange={(event) =>  dispatch({
+           type: 'CHG_CURRENCY',
+           payload: event.target.value,
+       })}>
+           <option defaultValue>Choose...</option>
+           <option value="£ Pound" name="pounds"> £ Pound</option>
+           <option value="$ Dollar" name="dollars">$ Dollar</option>
+           <option value="€ Euro" name="finance">€ Euro</option>
+           <option value="₹ Ruppee" name="rupees">₹ Ruppee</option>
+   </select>
+    </div>
+);
+    
 };
 export default CurrencySelector;

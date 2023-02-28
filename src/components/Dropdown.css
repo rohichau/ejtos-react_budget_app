@@ -1,0 +1,10 @@
+.dropdown-container .dropdown-option {
+    background-color: green;
+    color: white;
+  }
+  
+  .dropdown-container .dropdown-option:hover {
+    background-color: white;
+    color: green;
+  }
+  
