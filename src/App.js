@@ -29,7 +29,7 @@ const App = () => {
                     <div className='col-sm'>
                         <Remaining />
                     </div>
-                    }        
+                    }     
                     {                 
                     //ExpenseTotal component
                     <div className='col-sm'>
@@ -43,7 +43,8 @@ const App = () => {
                     </div>
                     }
                     </div>        
-                    <div className='row mt-3'>   
+                    <div className='row mt-3'> 
+                    <h2 className='mt-3'>Allocation</h2>      
                     {                    
                     <div className='col-lg'>
                         <ExpenseList />

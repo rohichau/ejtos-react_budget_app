@@ -90,6 +90,39 @@ export const AppReducer = (state, action) => {
         //     return {
         //         ...state
         //     }
+        case 'DECREASE_EXPENSE':
+            let allocated_budget = 0;
+            allocated_budget = state.expenses.reduce(
+                (previousExp, currentExp) => {
+                    return previousExp + currentExp.cost
+                },0
+            );
+            allocated_budget = allocated_budget - action.payload.cost;
+            if (allocated_budget < 0){
+                alert("You cannot reduce the expenses  value lower below zero")
+                allocated_budget = allocated_budget + action.payload.cost;
+                return {
+                    ...state
+                }
+            }
+            action.type = "DONE";
+            allocated_budget = 0;
+            state.expenses.map((currentExp)=> {
+                if(currentExp.name === action.payload.name) {
+                    currentExp.cost = currentExp.cost - action.payload.cost;
+                    if (currentExp.cost < 0){
+                        alert("You cannot reduce the budget value lower below zero")
+                        currentExp.cost = currentExp.cost + action.payload.cost;
+                        return {
+                            ...state
+                        }
+                    }
+                }
+                return currentExp
+            });
+            return {
+                ...state,
+            };
         
         case 'CHG_CURRENCY':
             action.type = "DONE";
