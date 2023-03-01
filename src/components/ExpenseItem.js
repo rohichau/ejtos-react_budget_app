@@ -4,7 +4,7 @@ import {FaPlus} from 'react-icons/fa';
 import { AppContext } from '../context/AppContext';
 
 const ExpenseItem = (props) => {
-    const { dispatch } = useContext(AppContext);
+    const { dispatch, currency } = useContext(AppContext);
 
     const handleDeleteExpense = () => {
         dispatch({
@@ -23,13 +23,24 @@ const ExpenseItem = (props) => {
             type: 'ADD_EXPENSE',
             payload: expense
         });
+    }
 
+    const increaseAllocation = (name) => {
+        const expense = {
+            name: name,
+            cost: 10,
+        };
+
+        dispatch({
+            type: 'DECREASE_EXPENSE',
+            payload: expense
+        });
     }
 
     return (
         <tr>
         <td>{props.name}</td>
-        <td>£{props.cost}</td>
+        <td>{currency}{props.cost}</td>
         {/* <td><button onClick={event=> increaseAllocation(props.name)}>+</button></td> */}
         {<td><button size='1.5em' onClick={event=> increaseAllocation(props.name)}><FaPlus style={{color:'green',fontSize:'1.5em'}}/></button></td>}
         {/* <td><TiUserAdd size='1.5em' color='green' onClick={event=> increaseAllocation(props.name)}></TiUserAdd></td> */}
